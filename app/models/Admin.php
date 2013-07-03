@@ -12,4 +12,5 @@ class Admin extends Eloquent {
     {
     	return Validator::make($data,self::$rules);
     }
+
 }

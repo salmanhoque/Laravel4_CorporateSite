@@ -12,7 +12,7 @@ class AdminsTableSeeder extends Seeder {
 
         $admins = array(
             array('username' => 'salman', 'password' => 'pass'),
-        	array('username' => 'admin', 'password' => Hash::make('I am giving a BIT of SALT on your PASS-WORD password'))
+        	array('username' => 'admin', 'password' => md5('I am giving a BIT of SALT on your PASS-WORD password'))
         ); 
 
         // Uncomment the below to run the seeder
