@@ -11,8 +11,7 @@ class AdminsTableSeeder extends Seeder {
         $password   = Hash::make($salt.$pass);*/
 
         $admins = array(
-            array('username' => 'salman', 'password' => 'pass'),
-        	array('username' => 'admin', 'password' => md5('I am giving a BIT of SALT on your PASS-WORD password'))
+        	array('username' => 'administrator', 'password' => Hash::make('password'))
         ); 
 
         // Uncomment the below to run the seeder
