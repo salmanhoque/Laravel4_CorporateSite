@@ -22,7 +22,9 @@ class Non_adminsController extends BaseController {
      */
     public function show($slug)
     {
-        return $slug;
+        //return DB::getQueryLog($data);
+        $data = Post::where('slug',$slug)->get();       
+        return View::make('non_admins.show')->with('posts',$data);
     }
 
     

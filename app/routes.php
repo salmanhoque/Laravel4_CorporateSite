@@ -12,7 +12,9 @@
 */
 
 Route::get('/', array('uses' => 'Non_adminsController@index')); 
-Route::get('/{{ $slug }}', array('uses' => 'Non_adminsController@show')); 
+Route::get('/page/{slug}', array('uses' => 'Non_adminsController@show'));
+
+	 
 
 Route::resource('posts', 'PostsController');
 

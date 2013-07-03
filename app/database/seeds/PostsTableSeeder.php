@@ -8,11 +8,11 @@ class PostsTableSeeder extends Seeder {
     	// DB::table('posts')->delete();
 
         $posts = array(
-        	'slug'		=>'our_aim',
+        	'slug'		=>'contact_us',
             'position' 	=> 1,
-            'title' 	=>'Our Aim',
-			'body'		=>'Our Aim Is To Build This Site Using Laravel! :D',
-            'visibility'=>1
+            'title' 	=>'Contact Us',
+			'body'		=>'This is the Contact Us page :D',
+            'visibility'=>1,
         );
 
         // Uncomment the below to run the seeder
