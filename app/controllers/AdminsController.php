@@ -9,7 +9,7 @@ class AdminsController extends BaseController {
      */
     public function index()
     {
-        //
+        return View::make('admins.index');
     }
 
     /**
@@ -17,63 +17,28 @@ class AdminsController extends BaseController {
      *
      * @return Response
      */
-    public function create()
-    {
-        //
-    }
+    public function login()
+    {           
+        $userInput  = Input::only('username','password');
+        $valid      = Admin::validate($userInput);
+        
+        $username    = Input::get('username'); 
+        $password    = Input::get('password');
+            
+        /*$userCount   = Admin::where('username',$username)
+                            ->where('password',$password)
+                            ->count();
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return Response
-     */
-    public function store()
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $userCount;*/
+  
+        if ($valid->fails()) {
+            return Redirect::to('admins');
+        } else {
+            return Redirect::to('/posts');
+        }
+        
+        
+       
     }
 
 }

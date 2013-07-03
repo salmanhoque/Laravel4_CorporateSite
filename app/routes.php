@@ -14,8 +14,8 @@
 Route::get('/', array('uses' => 'Non_adminsController@index')); 
 Route::get('/page/{slug}', array('uses' => 'Non_adminsController@show'));
 
+Route::get('/admins',array('as'=>'admins','uses' =>'AdminsController@index'));
+Route::put('/admins/login',array('uses' =>'AdminsController@login'));
 	 
 
 Route::resource('posts', 'PostsController');
-
-Route::resource('admins', 'AdminsController');

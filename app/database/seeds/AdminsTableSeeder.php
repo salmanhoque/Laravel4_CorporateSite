@@ -6,13 +6,17 @@ class AdminsTableSeeder extends Seeder {
     {
     	// Uncomment the below to wipe the table clean before populating
     	// DB::table('admins')->delete();
+       /* $pass       = 'password';
+        $salt       = 'I am giving a BIT of SALT on your PASS-WORD'
+        $password   = Hash::make($salt.$pass);*/
 
         $admins = array(
-        	
-        );
+            array('username' => 'salman', 'password' => 'pass'),
+        	array('username' => 'admin', 'password' => Hash::make('I am giving a BIT of SALT on your PASS-WORD password'))
+        ); 
 
         // Uncomment the below to run the seeder
-        // DB::table('admins')->insert($admins);
+        DB::table('admins')->insert($admins);
     }
 
 }

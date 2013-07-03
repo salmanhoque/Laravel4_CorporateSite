@@ -48,7 +48,7 @@ class PostsTableSeeder extends Seeder {
         );
         
         // Uncomment the below to run the seeder
-        DB::table('posts')->insert($posts);
+        //DB::table('posts')->insert($posts);
     }
 
 }
