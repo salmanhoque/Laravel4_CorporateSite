@@ -3,7 +3,7 @@
 class AdminsController extends BaseController {
 
     /**
-     * Display a listing of the resource.
+     * UserLogin Form.
      *
      * @return Response
      */
@@ -13,8 +13,8 @@ class AdminsController extends BaseController {
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
+     * Log the user in.
+     * validation message if not correct or log user in and store user credentials
      * @return Response
      */
     public function login()
@@ -36,9 +36,26 @@ class AdminsController extends BaseController {
         {
             return Redirect::to('/posts');
         }
-        
-        
-       
+    }
+
+
+     /**
+     * LogOut page destroy users session.
+     *
+     * @return Response
+     */
+    public function logOut()
+    {           
+        if (Auth::user())
+        {
+            Auth::logout();
+            $msg = 'Logout Successful';
+            return Redirect::to('admins')->with('msg', $msg);
+        }
+        else
+        {
+            return Redirect::to('admins');
+        }
     }
 
 }

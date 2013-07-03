@@ -9,6 +9,11 @@ class PostsController extends BaseController {
      */
     public function index()
     {
+        return View::make('posts.index');
+    }
+
+    public function allposts()
+    {
         $view = View::make('posts.index');
         $view->msg = "Let me tell you Hello world!";
         return $view;
