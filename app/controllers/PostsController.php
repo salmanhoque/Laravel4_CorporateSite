@@ -9,14 +9,11 @@ class PostsController extends BaseController {
      */
     public function index()
     {
-        return View::make('posts.index');
-    }
-
-    public function allposts()
-    {
-        $view = View::make('posts.index');
-        $view->msg = "Let me tell you Hello world!";
+        $all_page       = Post::PageList();
+        $view           = View::make('posts.index');
+        $view->posts    = $all_page;
         return $view;
+
     }
 
     /**
@@ -26,7 +23,7 @@ class PostsController extends BaseController {
      */
     public function create()
     {
-        //
+       return "Hello world";
     }
 
     /**
@@ -47,7 +44,8 @@ class PostsController extends BaseController {
      */
     public function show($id)
     {
-        //
+        $post   = Post::where('id',$id)->get();
+        return  View::make('posts.show')->with('PostItems',$post);
     }
 
     /**
@@ -58,7 +56,7 @@ class PostsController extends BaseController {
      */
     public function edit($id)
     {
-        //
+        return $id;
     }
 
     /**
