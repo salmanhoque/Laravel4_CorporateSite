@@ -2,6 +2,9 @@
 
 class Non_adminsController extends BaseController {
 
+    // protected $layout = 'non_admins.common';
+
+
     /**
      * Display a listing of the resource.
      *
@@ -9,8 +12,15 @@ class Non_adminsController extends BaseController {
      */
     public function index()
     {
-        $data = Post::all();
-        return View::make('non_admins.index', array('posts' => $data));
+        $home_page_slug     = 'home';
+        $all_page_links     = Non_admin::PageList();
+        $home_page          = Post::where('slug',$home_page_slug)->get(); 
+
+        $view               = View::make('non_admins.index');
+        $view->pageLinks    = $all_page_links;
+        $view->homePage     = $home_page;
+
+        return $view;
     }
 
 
@@ -23,8 +33,12 @@ class Non_adminsController extends BaseController {
     public function show($slug)
     {
         //return DB::getQueryLog($data);
-        $data = Post::where('slug',$slug)->get();       
-        return View::make('non_admins.show')->with('posts',$data);
+        $all_page_links     = Non_admin::PageList();
+        $current_page       = Post::where('slug',$slug)->get();
+        $view               = View::make('non_admins.show');
+        $view->pageLinks    = $all_page_links;
+        $view->posts        = $current_page;
+        return $view;
     }
 
     
