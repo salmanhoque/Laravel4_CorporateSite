@@ -32,7 +32,8 @@ class AdminsController extends BaseController {
         return $userCount;*/
   
         if ($valid->fails()) {
-            return Redirect::to('admins');
+            $errors = $valid->messages();
+            return Redirect::to('admins')->withErrors($errors)->withInput();
         } else {
             return Redirect::to('/posts');
         }
