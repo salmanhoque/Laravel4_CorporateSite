@@ -21,4 +21,13 @@ class Post extends Eloquent {
     	return Validator::make($data,self::$rules);
     }
 
+    public static function slugify($data)
+    {	
+    	$lowercase_string	= strtolower($data);
+    	$splited_array  	= explode(" ",$lowercase_string);
+    	$joined_string		= implode("_", $splited_array);
+
+    	return $joined_string;
+    }
+
 }

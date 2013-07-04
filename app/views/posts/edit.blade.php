@@ -7,11 +7,6 @@
 		{{ $errors->first('body', '<p>:message</p>') }}
 	@endif	
 
-	@if (Session::has('msg'))
-	    <div id="flash_error">{{ Session::get('msg') }}</div>
-	@endif
-
-
 	@foreach ($PostItems as $PostItem)
 
 		{{ Form::open(array('url'=>'/posts/'.$PostItem->id,'method'=>'put')) }}

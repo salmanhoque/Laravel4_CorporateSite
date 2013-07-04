@@ -34,7 +34,28 @@ class PostsController extends BaseController {
      */
     public function store()
     {
-        //
+        $fields = Input::only('title','visibility','position','body');
+        $valid  = Post::validation($fields);
+        
+        if($valid->fails())
+        {
+            $errors = $valid->messages();
+            return Redirect::to('/posts/create')
+                            ->withErrors($errors)->withInput();
+        }
+        else{
+            Post::create(array(
+                                'title'      => Input::get('title'),
+                                'slug'       => Post::slugify(Input::get('title')),
+                                'visibility' => Input::get('visibility'),
+                                'position'   => Input::get('position'),
+                                'body'       => Input::get('body'),
+                            ));
+
+            $msg = "Your post has been created!";
+            return Redirect::to('/posts')
+                            ->with('msg',$msg);
+        }
     }
 
     /**
@@ -72,7 +93,14 @@ class PostsController extends BaseController {
         $fields = Input::only('title','visibility','position','body');
         $valid  = Post::validation($fields);
         
-        $update_fileds  = Post::where('id',$id)
+        if($valid->fails())
+        {
+            $errors = $valid->messages();
+            return Redirect::to('posts/'.$id.'/edit')
+                            ->withErrors($errors);
+        }
+        else{
+            Post::where('id',$id)
                             ->update(array(
                                 'title'      => Input::get('title'),
                                 'visibility' => Input::get('visibility'),
@@ -80,19 +108,6 @@ class PostsController extends BaseController {
                                 'body'       => Input::get('body'),
                             ));
 
-        if($valid->fails())
-        {
-            $errors = $valid->messages();
-            return Redirect::to('posts/'.$id.'/edit')
-                            ->withErrors($errors);
-        }
-        elseif($update_fileds == False)
-        {
-            $msg = "Server Error!";
-            return Redirect::to('posts/'.$id.'/edit')
-                            ->with('msg',$msg);
-        }
-        else{
             $msg = "Your post has been updated!";
             return Redirect::to('posts/'.$id.'/edit')
                             ->with('msg',$msg);
@@ -108,7 +123,7 @@ class PostsController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        Post::where('id',$id)
     }
 
 }

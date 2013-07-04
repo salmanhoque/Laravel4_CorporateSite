@@ -16,6 +16,10 @@
 		<p> {{ $PostItem->body  }}</p>
 
 		<p> {{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page') }} </p>
+	
+	{{ Form::open(array('url'=>'/posts','method'=>'post')) }}
+
+		<p> {{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page') }} </p>
 	@endforeach
 
 @stop

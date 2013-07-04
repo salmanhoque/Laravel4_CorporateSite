@@ -4,4 +4,8 @@
 <a href='#'>File Upload</a> |
 <a href='{{ URL::action('AdminsController@logOut') }}'>LogOut</a> 
 
+@if (Session::has('msg'))
+    <div id="flash_error">{{ Session::get('msg') }}</div>
+@endif
+	
 @yield('content')

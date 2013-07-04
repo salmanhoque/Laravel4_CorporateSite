@@ -8,15 +8,10 @@
 		{{ $errors->first('body', '<p>:message</p>') }}
 	@endif	
 
-	@if (Session::has('msg'))
-	    <div id="flash_error">{{ Session::get('msg') }}</div>
-	@endif
-
-
 	{{ Form::open(array('url'=>'/posts','method'=>'post')) }}
 
 	{{ Form::label('title') }}
-	{{ Form::text('title') }}
+	{{ Form::text('title',Input::old('title')) }}
 
 	<br/>
 
@@ -26,12 +21,12 @@
 	<br/>
 
 	{{ Form::label('position') }}
-	{{ Form::text('position') }}
+	{{ Form::text('position',Input::old('position')) }}
 
 	<br/>
 
 	{{ Form::label('body') }}<br/>
-	{{ Form::textarea('body') }}
+	{{ Form::textarea('body',Input::old('body')) }}
 
 	<br/>
 	{{ Form::submit('Create Post') }}
