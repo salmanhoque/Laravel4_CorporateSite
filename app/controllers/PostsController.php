@@ -2,6 +2,7 @@
 
 class PostsController extends BaseController {
 
+    //http://maxoffsky.com/code-blog/howto-ajax-multiple-file-upload-in-laravel/
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +24,7 @@ class PostsController extends BaseController {
      */
     public function create()
     {
-       return "Hello world";
+       return View::make('posts.create');
     }
 
     /**
@@ -56,7 +57,8 @@ class PostsController extends BaseController {
      */
     public function edit($id)
     {
-        return $id;
+        $post   = Post::where('id',$id)->get();
+        return  View::make('posts.edit')->with('PostItems',$post);
     }
 
     /**
@@ -67,7 +69,35 @@ class PostsController extends BaseController {
      */
     public function update($id)
     {
-        //
+        $fields = Input::only('title','visibility','position','body');
+        $valid  = Post::validation($fields);
+        
+        $update_fileds  = Post::where('id',$id)
+                            ->update(array(
+                                'title'      => Input::get('title'),
+                                'visibility' => Input::get('visibility'),
+                                'position'   => Input::get('position'),
+                                'body'       => Input::get('body'),
+                            ));
+
+        if($valid->fails())
+        {
+            $errors = $valid->messages();
+            return Redirect::to('posts/'.$id.'/edit')
+                            ->withErrors($errors);
+        }
+        elseif($update_fileds == False)
+        {
+            $msg = "Server Error!";
+            return Redirect::to('posts/'.$id.'/edit')
+                            ->with('msg',$msg);
+        }
+        else{
+            $msg = "Your post has been updated!";
+            return Redirect::to('posts/'.$id.'/edit')
+                            ->with('msg',$msg);
+        }
+
     }
 
     /**

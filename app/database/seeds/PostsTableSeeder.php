@@ -40,15 +40,17 @@ class PostsTableSeeder extends Seeder {
         );*/
 
         $posts = array(
-            'slug'      =>'our_product',
-            'position'  => 5,
-            'title'     =>'Our Product',
-            'body'      =>'This is our product page',
-            'visibility'=> 0,
+            'slug'      =>'pricing',
+            'position'  => 6,
+            'title'     =>'Pricing',
+            'body'      =>'This is priceing page',
+            'visibility'=> 1,
+            'created_at'=> date('Y-m-d H:i:s'),
+            'updated_at'=> date('Y-m-d H:i:s'),
         );
         
         // Uncomment the below to run the seeder
-        //DB::table('posts')->insert($posts);
+        DB::table('posts')->insert($posts);
     }
 
 }

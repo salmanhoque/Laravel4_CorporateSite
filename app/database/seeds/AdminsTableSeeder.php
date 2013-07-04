@@ -15,7 +15,7 @@ class AdminsTableSeeder extends Seeder {
         ); 
 
         // Uncomment the below to run the seeder
-        DB::table('admins')->insert($admins);
+        //DB::table('admins')->insert($admins);
     }
 
 }
