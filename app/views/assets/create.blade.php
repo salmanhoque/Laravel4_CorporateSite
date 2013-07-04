@@ -2,11 +2,11 @@
 
 @section('content')
 
-	@foreach ($assets as $asset)
+	@if ($errors->has())
+		{{ $errors->first('file', '<p>:message</p>') }}
+	@endif	
 
-		File Name: {{ $asset->asset_name }} |
-		File Url : {{ HTML::link($asset->url,$asset->url) }}
-
-	@endforeach
-
+	{{ Form::open(array('url'=>'/assets', 'method'=>'post','files' => 'true')) }}
+	{{ Form::file('file') }} <br/>
+	{{ Form::submit('Upload This File') }}
 @stop

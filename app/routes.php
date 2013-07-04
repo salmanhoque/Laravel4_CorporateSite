@@ -34,7 +34,7 @@ Route::get('/admins/logout',array('uses' =>'AdminsController@logOut'));
 Route::group(['before' => 'auth'], function() {
 	Route::resource('posts', 'PostsController');  
 	Route::resource('assets', 'AssetsController',
-				array('except' => array('show','edit', 'update',)));     
+				array('except' => array('show','edit','update',)));     
 });
 
 

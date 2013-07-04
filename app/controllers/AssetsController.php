@@ -22,7 +22,7 @@ class AssetsController extends BaseController {
      */
     public function create()
     {
-        return View::make('assets::create')
+        return View::make('assets.create');
     }
 
     /**
@@ -31,8 +31,25 @@ class AssetsController extends BaseController {
      * @return Response
      */
     public function store()
-    {
-        //
+    {     
+        $input = Input::all();
+        $rules = array(
+            'file' => 'required',
+        );
+     
+        $validation = Validator::make($input, $rules);
+     
+        $file = Input::file('file');
+     
+        $originalName   = $file->getClientOriginalName();
+        $directory      = 'public/uploads/'.date('m_Y').'/';
+        $filename       = time().'_'.$originalName;
+     
+        $upload_success = Input::file('file')->move($directory, $filename);;
+     
+        if( $upload_success ) {
+            return "File uploaded";
+        } 
     }
 
     /**
