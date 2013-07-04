@@ -28,7 +28,7 @@ class AdminsTest extends TestCase {
 		$crawler = $this->client->request('GET', '/admins');
 		$form 	 = $crawler->selectButton('Login')->form(array(
 		    'username' => 'administrator',
-		    'password' => 'password',
+		    'password' => 'passowrd',
 		));
 
 		$crawler = $this->client->submit($form);

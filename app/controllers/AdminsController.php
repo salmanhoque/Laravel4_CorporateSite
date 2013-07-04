@@ -29,7 +29,10 @@ class AdminsController extends BaseController {
         } 
         elseif (Auth::attempt($userInput) == False ) {
             
-            $msg = 'No user found in database please check your username and password';
+            $msg = '<div class="alert alert-error">
+                    No user found in database please check
+                    your username and password
+                    </div>';
             return Redirect::to('admins')->with('msg', $msg);  
         }
         else 
@@ -49,7 +52,7 @@ class AdminsController extends BaseController {
         if (Auth::user())
         {
             Auth::logout();
-            $msg = 'Logout Successful';
+            $msg = '<div class="alert alert-success">Logout Successful</div>';
             return Redirect::to('admins')->with('msg', $msg);
         }
         else
