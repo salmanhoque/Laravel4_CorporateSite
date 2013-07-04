@@ -41,14 +41,27 @@ class AssetsController extends BaseController {
      
         $file = Input::file('file');
      
-        $originalName   = $file->getClientOriginalName();
-        $directory      = 'public/uploads/'.date('m_Y').'/';
-        $filename       = time().'_'.$originalName;
+        $originalName       = $file->getClientOriginalName();
+        $directory          = 'public/uploads/'.date('m_Y').'/';
+        $updatedFilename    = Post::slugify($originalName);
+        $filename           = time().'_'.$updatedFilename;
      
-        $upload_success = Input::file('file')->move($directory, $filename);;
-     
-        if( $upload_success ) {
-            return "File uploaded";
+        $upload_success = Input::file('file')->move($directory, $filename);
+        $inserted_url   = URL::to('/').'/uploads/'.date('m_Y').'/'.$filename;
+
+        if( $upload_success ) 
+        {
+            $msg = "File uploaded successfully!";
+            Asset::create(array(
+                    'asset_name' => $originalName,
+                    'url'        => $inserted_url,
+                ));
+            return Redirect::to('/assets')->with('msg',$msg);
+        }
+        else
+        {
+            $msg = "Error: File upload Unsuccessful!";
+            return Redirect::to('/assets')->with('msg',$msg);
         } 
     }
 
@@ -60,7 +73,12 @@ class AssetsController extends BaseController {
      */
     public function destroy($id)
     {
-        //
+        Asset::where('id',$id)->delete();
+
+        $msg = "Your post has been deleted!";
+        
+        return Redirect::to('/assets')->with('msg',$msg);
+
     }
 
 }
