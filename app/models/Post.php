@@ -25,9 +25,16 @@ class Post extends Eloquent {
     {	
     	$lowercase_string	= strtolower($data);
     	$splited_array  	= explode(" ",$lowercase_string);
-    	$joined_string		= implode("_", $splited_array);
-
-    	return $joined_string;
+    	
+    	if (count($splited_array) == 1)
+    	{
+    		return $lowercase_string;
+    	}
+    	else
+    	{
+    		$joined_string		= implode("_", $splited_array);
+    		return $joined_string;
+       	}
     }
 
 }

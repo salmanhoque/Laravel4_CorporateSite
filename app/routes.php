@@ -32,5 +32,11 @@ Route::get('/admins/logout',array('uses' =>'AdminsController@logOut'));
 * A is filter used to check the users privilege  
 */	 
 Route::group(['before' => 'auth'], function() {
-	Route::resource('posts', 'PostsController');    	    
+	Route::resource('posts', 'PostsController');  
+	Route::resource('assets', 'AssetsController',
+				array('except' => array('show','edit', 'update',)));     
 });
+
+
+
+
