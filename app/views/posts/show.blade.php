@@ -17,9 +17,9 @@
 
 		<p> {{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page') }} </p>
 	
-	{{ Form::open(array('url'=>'/posts','method'=>'post')) }}
+		{{ Form::open(array('url'=>'/posts/'.$PostItem->id,'method'=>'delete')) }}
+			<p> {{ Form::submit('Delete This Post') }} </p>
 
-		<p> {{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page') }} </p>
 	@endforeach
 
 @stop

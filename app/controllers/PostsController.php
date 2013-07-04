@@ -123,7 +123,11 @@ class PostsController extends BaseController {
      */
     public function destroy($id)
     {
-        Post::where('id',$id)
+        Post::where('id',$id)->delete();
+
+        $msg = "Your post has been deleted!";
+        
+        return Redirect::to('/posts')->with('msg',$msg);
     }
 
 }
