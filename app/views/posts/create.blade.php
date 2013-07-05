@@ -12,8 +12,9 @@
 	{{ Form::open(array('url'=>'/posts','method'=>'post')) }}
 
 	{{ Form::label('title') }}
-	{{ Form::text('title',Input::old('title')) }}
-
+	<span class='title-text'>
+		{{ Form::text('title',Input::old('title')) }}
+	</span>	
 	<br/>
 
 	{{ Form::label('visibility') }}

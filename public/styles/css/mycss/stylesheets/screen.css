@@ -15,3 +15,8 @@
   margin-top: 10px;
   margin-bottopm: 10px;
 }
+
+/* line 22, ../sass/screen.scss */
+.title-text input[type="text"] {
+  width: 820px;
+}

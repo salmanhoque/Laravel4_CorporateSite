@@ -14,8 +14,9 @@
 		{{ Form::open(array('url'=>'/posts/'.$PostItem->id,'method'=>'put')) }}
 
 		{{ Form::label('title') }}
-		{{ Form::text('title',$PostItem->title) }}
-
+		<span class='title-text'>
+			{{ Form::text('title',$PostItem->title) }}
+		</span>	
 		<br/>
 
 		{{ Form::label('visibility') }}
