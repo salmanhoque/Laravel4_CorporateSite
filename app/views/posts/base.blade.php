@@ -11,10 +11,10 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel='stylesheet' href='/assets/css/bootstrap.css'/>
-		<link rel='stylesheet' href='/assets/css/bootstrap-responsive.css'/>
-		<link rel='stylesheet' href='/assets/css/my-style.css'/>
-        <script src="/assets/js/vendor/modernizr-2.6.2.min.js"></script>
+        <link rel='stylesheet' href='/styles/css/bootstrap.css'/>
+		<link rel='stylesheet' href='/styles/css/bootstrap-responsive.css'/>
+		<link rel='stylesheet' href='/styles/css/mycss/stylesheets/screen.css'/>
+        <script src="/styles/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
 
     <body>
@@ -36,22 +36,24 @@
 			</div><!--/navbar-inner-->	
 		</div><!--/navbar-->
 		
-		<div class="page-header">
+		<div class="page-header admin-banner">
 			<div class='offset1'>
 		  		<h2>AdminPanel</h2>
 		  	</div>
 		</div>
 
-		<div class='row'>
+		<div class='row section'>
 
-			<div class='span3 '>
-				<a href='{{ URL::action('PostsController@index') }}'>Admin Home</a> 
-				<a href='{{ URL::action('PostsController@create') }}'>Create Post</a> 
-				<a href='{{ URL::action('AssetsController@index') }}'>File Upload</a> 
-				<a href='{{ URL::action('AdminsController@logOut') }}'>LogOut</a> 
+			<div class='span3 admin-nav'>
+				<ul class='nav nav-tabs nav-stacked'>
+					<li><a href='{{ URL::action('PostsController@index') }}'>Admin Home</a> </li>
+					<li><a href='{{ URL::action('PostsController@create') }}'>Create Post</a> </li>
+					<li><a href='{{ URL::action('AssetsController@index') }}'>File Upload</a> </li>
+					<li><a href='{{ URL::action('AdminsController@logOut') }}'>LogOut</a> </li>
+				<ul>
 			</div>
 
-			<div class='span8'>
+			<div class='span9 well text-justify'>
 				@if (Session::has('msg'))
 				    <div id="flash_error">{{ Session::get('msg') }}</div>
 				@endif
@@ -63,13 +65,15 @@
 
 		<div class="page-header">
 		  	<h3 class='text-center'><em>Simplest CMS Site<small> 
-		  		created by Salman</small></em></h3>
+		  		created by <a href='http://www.salmanhoque.com'>
+		  		Salman</a></small></em></h3>
 		</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="/assets/js/bootstrap.min.js"></script>
-        <script src="/assets/js/plugins.js"></script>
-        <script src="/assets/js/main.js"></script>
+        <script src="/styles/js/bootstrap.min.js"></script>
+        <script src="/styles/js/plugins.js"></script>
+        <script src="/styles/js/main.js"></script>
+        <script src="/ckeditor/ckeditor.js"></script>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
 <!--         <script>

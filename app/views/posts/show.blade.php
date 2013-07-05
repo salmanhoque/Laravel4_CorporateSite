@@ -4,21 +4,33 @@
 	@foreach ($PostItems as $PostItem)
 		<h1>{{ $PostItem->title }}</h1>
 		
-		<p> Created At: {{ $PostItem->created_at }}</p>
-		<p> Updated At: {{ $PostItem->updated_at }}</p>
-		
-		@if ($PostItem->visibility == 1)
-		<p> Visibility: True</p>
-		@else
-		<p> Visibility: False</p>
-		@endif
+		<p class='pull-right'><em> Created At: {{ $PostItem->created_at }}</em></p>
+		<span class='clearfix'></span>
+		<p class='pull-right'><em> Updated At: {{ $PostItem->updated_at }}</em></p>
+		<span class='clearfix'></span>
+
+		<strong>
+			@if ($PostItem->visibility == 1)
+			<p> Visibility: True</p>
+			@else
+			<p> Visibility: False</p>
+			@endif
+		</strong>
 
 		<p> {{ $PostItem->body  }}</p>
 
-		<p> {{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page') }} </p>
+		<p> 
+			{{ HTML::link('/posts/'.$PostItem->id.'/edit','Edit This Page',
+				array('class'=>'btn btn-warning pull-left')) }}
+		</p>
 	
+		
 		{{ Form::open(array('url'=>'/posts/'.$PostItem->id,'method'=>'delete')) }}
-			<p> {{ Form::submit('Delete This Post') }} </p>
+		<p> 
+			{{ Form::submit('Delete This Post',
+			array('class'=>'btn btn-danger pull-right')) }} 
+			<span class='clearfix'></span>
+		</p>
 
 	@endforeach
 

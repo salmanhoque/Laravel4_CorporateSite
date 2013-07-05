@@ -29,12 +29,15 @@
 
 		<br/>
 
-		{{ Form::label('body') }}<br/>
-		{{ Form::textarea('body',$PostItem->body) }}
+		{{ Form::textarea('body',$PostItem->body,
+			array('class'=>'ckeditor')) }}
 
 		<br/>
-		{{ Form::submit('Update This Post') }}
-		<p> Last Updated At: {{ $PostItem->updated_at }}</p>
+		{{ Form::submit('Update This Post',
+			array('class'=>'btn btn-primary pull-right')) }}
+		<span class='clearfix'></span>
+			
+		<p> <strong>Last Updated At: {{ $PostItem->updated_at }}</strong></p>
 
 	@endforeach	
 

@@ -25,10 +25,10 @@
 
 	<br/>
 
-	{{ Form::label('body') }}<br/>
-	{{ Form::textarea('body',Input::old('body')) }}
+	{{ Form::textarea('body',Input::old('body'),
+		array('class'=>'ckeditor')) }}
 
 	<br/>
-	{{ Form::submit('Create Post') }}
-
+	{{ Form::submit('Create Post',array('class'=>'btn btn-primary pull-right')) }}
+		<span class='clearfix'></span>
 @stop

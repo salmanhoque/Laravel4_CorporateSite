@@ -1,9 +1,9 @@
 @extends('posts.base')
 
 @section('content')
-	<h1>Welcome to the Admin Panel</h1> <br/>
-	<p>Here You can do many things</p>
-	<ul>
+	<h2>All Posts/Pages</h2>
+	<p>Click to view,edit or delete</p>
+	<ul class='nav nav-pills nav-stacked'>
 		@foreach ($posts as $post)
 			<li>
 				{{ HTML::link('/posts/'.$post->id,$post->title) }}
