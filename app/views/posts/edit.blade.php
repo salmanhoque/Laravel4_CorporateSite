@@ -2,9 +2,11 @@
 
 @section('content')
 	@if ($errors->has())
-		{{ $errors->first('title', '<p>:message</p>') }}
-		{{ $errors->first('visibility', '<p>:message</p>') }}
-		{{ $errors->first('body', '<p>:message</p>') }}
+		<div class="alert alert-error">
+			{{ $errors->first('title', '<p>:message</p>') }}
+			{{ $errors->first('visibility', '<p>:message</p>') }}
+			{{ $errors->first('body', '<p>:message</p>') }}
+		</div>
 	@endif	
 
 	@foreach ($PostItems as $PostItem)

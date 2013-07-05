@@ -52,7 +52,8 @@ class PostsController extends BaseController {
                                 'body'       => Input::get('body'),
                             ));
 
-            $msg = "Your post has been created!";
+            $msg = '<div class="alert alert-success">
+                    Your post has been created!</div>';
             return Redirect::to('/posts')
                             ->with('msg',$msg);
         }
@@ -108,7 +109,8 @@ class PostsController extends BaseController {
                                 'body'       => Input::get('body'),
                             ));
 
-            $msg = "Your post has been updated!";
+            $msg = '<div class="alert alert-success">
+                    Your post has been updated!</div>';
             return Redirect::to('posts/'.$id.'/edit')
                             ->with('msg',$msg);
         }
@@ -125,7 +127,8 @@ class PostsController extends BaseController {
     {
         Post::where('id',$id)->delete();
 
-        $msg = "Your post has been deleted!";
+        $msg = '<div class="alert alert-success">
+                Your post has been deleted!</div>';
         
         return Redirect::to('/posts')->with('msg',$msg);
     }

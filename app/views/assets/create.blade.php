@@ -7,6 +7,6 @@
 	@endif	
 
 	{{ Form::open(array('url'=>'/assets', 'method'=>'post','files' => 'true')) }}
-	{{ Form::file('file') }} <br/>
-	{{ Form::submit('Upload This File') }}
+	{{ Form::file('file') }} <br/> <br/>
+	{{ Form::submit('Upload This File',array('class'=>'btn btn-primary')) }}
 @stop

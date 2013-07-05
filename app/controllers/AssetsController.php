@@ -51,7 +51,8 @@ class AssetsController extends BaseController {
 
         if( $upload_success ) 
         {
-            $msg = "File uploaded successfully!";
+            $msg = '<div class="alert alert-success">
+                    File uploaded successfully!</div>';
             Asset::create(array(
                     'asset_name' => $originalName,
                     'url'        => $inserted_url,
@@ -60,7 +61,8 @@ class AssetsController extends BaseController {
         }
         else
         {
-            $msg = "Error: File upload Unsuccessful!";
+            $msg = '<div class="alert alert-error">
+                    Error: File upload Unsuccessful!</div>';
             return Redirect::to('/assets')->with('msg',$msg);
         } 
     }
@@ -75,7 +77,8 @@ class AssetsController extends BaseController {
     {
         Asset::where('id',$id)->delete();
 
-        $msg = "Your post has been deleted!";
+        $msg = '<div class="alert alert-success">
+                Your File has been deleted!</div>';
         
         return Redirect::to('/assets')->with('msg',$msg);
 
